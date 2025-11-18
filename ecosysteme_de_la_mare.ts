@@ -79,3 +79,49 @@ const animals: Animal[] = [
 for (const animal of animals) {
   console.log(animal.makeSound());
 }
+
+// EXERCICE 3: Interfaces - Comportements
+
+interface Swimmer {
+  swim(): void;
+}
+
+interface Flyer {
+  fly(): void;
+}
+
+interface Predator {
+  hunt(prey: Animal): void;
+}
+
+class Duck extends Animal implements Swimmer, Flyer {
+  makeSound(): string {
+    return "Coin Coin";
+  }
+  swim(): string {
+    return `${this.name} nage`;
+  };
+  fly(): string {
+    return `${this.name} vole`;
+  };
+}
+
+class Pike extends Fish implements Swimmer, Predator {
+  swim(): string {
+    return `${this.name} nage`;
+  };
+  hunt(prey: Animal): string {
+    return `${this.name} chasse ${prey.name}`;
+  }
+}
+
+const makeSwim = (creature: Swimmer) => {
+  return creature.swim();
+};
+
+// Test
+const canard = new Duck("Donald", "canard");
+const brochet = new Pike("Bruce", "brochet");
+console.log(makeSwim(canard));
+console.log(makeSwim(brochet));
+console.log(brochet.hunt(canard));

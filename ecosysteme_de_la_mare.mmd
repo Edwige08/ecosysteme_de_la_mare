@@ -1,4 +1,12 @@
 classDiagram
+    Creature <|-- Animal
+    Animal <|-- Frog
+    Animal <|-- Fish
+    Animal <|-- Dragonfly
+    Animal <|-- Mosquito
+    Animal <|-- Snail
+    Animal <|-- Duck
+    Animal <|-- Pike
     class Creature {
         -energy: number
         +name: string
@@ -8,4 +16,22 @@ classDiagram
         +move() void
         +rest() void
         +getEnergy() number
+    }
+
+    class Animal {
+        +makeSound() string
+    }
+
+    class Frog {}
+    class Fish {}
+    class Dragonfly {}
+    class Mosquito {}
+    class Snail {}
+    class Duck {
+        +swim() string
+        +fly() string
+    }
+    class Pike {
+        +swim() string
+        +hunt(prey: Animal) string
     }
